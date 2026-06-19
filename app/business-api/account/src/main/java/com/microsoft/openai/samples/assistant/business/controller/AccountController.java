@@ -1,6 +1,7 @@
 package com.microsoft.openai.samples.assistant.business.controller;
 
 import com.microsoft.openai.samples.assistant.business.models.Account;
+import com.microsoft.openai.samples.assistant.business.models.AccountType;
 import com.microsoft.openai.samples.assistant.business.models.PaymentMethod;
 import com.microsoft.openai.samples.assistant.business.models.Beneficiary;
 import com.microsoft.openai.samples.assistant.business.service.AccountService;
@@ -40,5 +41,11 @@ public class AccountController {
     public List<Beneficiary> getBeneficiaryDetails(@PathVariable String accountId) {
         logger.info("Received request to get beneficiary details for account id: {}", accountId);
         return accountService.getRegisteredBeneficiary(accountId);
+    }
+
+    @GetMapping("/{accountId}/type")
+    public AccountType getAccountType(@PathVariable String accountId) {
+        logger.info("Received request to get account type for account id: {}", accountId);
+        return accountService.getAccountType(accountId);
     }
 }

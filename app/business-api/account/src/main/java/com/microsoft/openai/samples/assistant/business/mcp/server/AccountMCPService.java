@@ -1,6 +1,7 @@
 package com.microsoft.openai.samples.assistant.business.mcp.server;
 
 import com.microsoft.openai.samples.assistant.business.models.Account;
+import com.microsoft.openai.samples.assistant.business.models.AccountType;
 import com.microsoft.openai.samples.assistant.business.models.Beneficiary;
 import com.microsoft.openai.samples.assistant.business.models.PaymentMethod;
 import com.microsoft.openai.samples.assistant.business.service.AccountService;
@@ -31,5 +32,10 @@ public class AccountMCPService {
     @Tool(description = "Get list of registered beneficiaries for a specific account")
     public List<Beneficiary> getRegisteredBeneficiary(String accountId) {
      return this.accountService.getRegisteredBeneficiary(accountId);
+    }
+
+    @Tool(description = "Get account type with features and limits")
+    public AccountType getAccountType(String accountId) {
+        return this.accountService.getAccountType(accountId);
     }
 }
